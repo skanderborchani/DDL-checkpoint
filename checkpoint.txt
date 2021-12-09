@@ -1,0 +1,30 @@
+reate table customer (
+customer_id varchar2(20),
+customer_name varchar2(20) not null,
+customer_tel number
+);
+
+alter table customer add constraint pk_customer PRIMARY KEY(customer_id);
+
+create table product (
+product_id varchar2(20),
+product_name varchar2(20) not null,
+price number check(price>0)
+);
+
+alter table product add constraint pk_product PRIMARY KEY(product_id);
+
+create table orders (
+customer_id varchar2(20),
+product_id varchar2(20),
+quantity number,
+total_amount number
+);
+
+alter table orders add constraint fk_orders FOREIGN KEY(customer_id);
+
+alter table orders add constraint fk_orders FOREIGN KEY(product_id);
+
+alter table product add category varchar2(20);
+
+alter table orders add OrderDate date default SYSDATE ;
